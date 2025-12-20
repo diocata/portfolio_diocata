@@ -4,35 +4,40 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-
-const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#journey", label: "Journey" },
-  { href: "#skills", label: "Skills" },
-];
+import ThemeToggle from "@/components/theme-toggle";
+import { motion } from "framer-motion";
+import { NAV_ITEMS, RESUME_URL } from "@/data";
+import { navbarVariants } from "@/lib/animations";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <motion.header
+      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      initial="hidden"
+      animate="visible"
+      variants={navbarVariants}
+    >
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold transition-colors hover:text-primary">
           DC
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
             >
               {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
             </Link>
           ))}
-          <Button asChild>
+          <ThemeToggle />
+          <Button asChild className="transition-transform hover:scale-105">
             <a
-              href="https://drive.google.com/file/d/1oAHbCgQ2vYfuosyFQiUW-Usdc2rh_FRW/view?usp=drive_link"
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -42,37 +47,40 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Navigation */}
-        <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="flex flex-col gap-4 mt-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Button asChild className="mt-4">
-                <a
-                  href="https://drive.google.com/file/d/1oAHbCgQ2vYfuosyFQiUW-Usdc2rh_FRW/view?usp=drive_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Resume
-                </a>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
               </Button>
-            </nav>
-          </SheetContent>
-        </Sheet>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <nav className="flex flex-col gap-4 mt-8">
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Button asChild className="mt-4">
+                  <a
+                    href={RESUME_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Resume
+                  </a>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
