@@ -1,22 +1,37 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
-const skills = [
-  { name: "Java", level: 90 },
-  { name: "Python", level: 85 },
-  { name: "SQL", level: 85 },
-  { name: "React", level: 75 },
-  { name: "C", level: 70 },
-  { name: "Scala", level: 65 },
-  { name: "R", level: 60 },
-  { name: "Jupyter", level: 80 },
-  { name: "Django", level: 70 },
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: ["Python", "TypeScript", "JavaScript", "Java", "SQL", "Scala", "R"],
+  },
+  {
+    title: "Frontend",
+    skills: ["React", "Next.js", "Redux", "Tailwind CSS", "HTML/CSS"],
+  },
+  {
+    title: "Backend & APIs",
+    skills: ["FastAPI", "Node.js", "Django", "REST APIs"],
+  },
+  {
+    title: "Cloud & Infrastructure",
+    skills: ["AWS Lambda", "API Gateway", "DynamoDB", "Athena", "S3"],
+  },
+  {
+    title: "AI & Data",
+    skills: ["LLMs", "AI Agents", "Strands Agents", "Data Pipelines", "Jupyter", "Pandas"],
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "Docker", "VS Code", "Asana"],
+  },
 ];
 
 const languages = [
   { name: "Portuguese", level: "Native" },
   { name: "English", level: "Fluent" },
-  { name: "French", level: "Intermediate" },
+  { name: "French", level: "Basic" },
   { name: "German", level: "Basic" },
 ];
 
@@ -35,18 +50,16 @@ export default function Skills() {
         <Card>
           <CardContent className="pt-6">
             <h3 className="text-xl font-semibold mb-6">Technical Skills</h3>
-            <div className="space-y-4">
-              {skills.map((skill) => (
-                <div key={skill.name} className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-primary transition-all duration-500"
-                      style={{ width: `${skill.level}%` }}
-                    />
+            <div className="space-y-5">
+              {skillCategories.map((category) => (
+                <div key={category.title}>
+                  <p className="text-sm text-muted-foreground mb-2">{category.title}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <Badge key={skill} variant="secondary">
+                        {skill}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
               ))}

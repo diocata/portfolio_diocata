@@ -25,7 +25,7 @@ const journeyItems = [
   {
     title: "Master's Degree, Computer Science and Engineering",
     organization: "Instituto Superior Técnico, Lisbon",
-    period: "September 2022 - Present",
+    period: "September 2022 - November 2024",
     description: "Specialization in Data Science",
     skills: ["SQL", "PDI", "MDX", "Python", "R", "d3.js"],
     icon: GraduationCap,

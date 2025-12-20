@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Diogo Catarino | Portfolio",
   description: "Business Intelligence Engineer at Amazon. Computer Science Engineer specializing in Data Science.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

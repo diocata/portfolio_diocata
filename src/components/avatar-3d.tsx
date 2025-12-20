@@ -1,25 +1,30 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useAnimations, Environment, ContactShadows } from "@react-three/drei";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState, useCallback } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import * as THREE from "three";
 
-function Avatar() {
+function Avatar({ isPaused }: { isPaused: boolean }) {
   const group = useRef<THREE.Group>(null);
   const { scene, animations } = useGLTF("/avatar.glb");
   const { actions } = useAnimations(animations, group);
   
   useEffect(() => {
-    // Play the first animation if available
     if (actions && Object.keys(actions).length > 0) {
       const firstAnimation = Object.values(actions)[0];
       if (firstAnimation) {
-        firstAnimation.reset().fadeIn(0.5).play();
+        if (isPaused) {
+          firstAnimation.paused = true;
+          firstAnimation.time = firstAnimation.getClip().duration;
+        } else {
+          firstAnimation.paused = false;
+          firstAnimation.reset().fadeIn(0.5).play();
+        }
       }
     }
-  }, [actions]);
+  }, [isPaused, actions]);
   
   return (
     <group ref={group}>
@@ -49,7 +54,7 @@ function ErrorFallback() {
   );
 }
 
-function Scene() {
+function Scene({ isPaused }: { isPaused: boolean }) {
   return (
     <Canvas
       camera={{ position: [0, 0, 6], fov: 40 }}
@@ -60,7 +65,7 @@ function Scene() {
       <spotLight position={[0, 5, 10]} angle={0.3} penumbra={1} intensity={0.5} />
       
       <Suspense fallback={<AvatarFallback />}>
-        <Avatar />
+        <Avatar isPaused={isPaused} />
         <Environment preset="city" />
       </Suspense>
       
@@ -82,11 +87,25 @@ function Scene() {
 }
 
 export default function Avatar3D() {
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handleClick = () => {
+    setIsPaused((prev) => !prev);
+  };
+
   return (
-    <div className="h-[500px] w-[500px] md:h-[600px] md:w-[600px]">
-      <ErrorBoundary fallback={<ErrorFallback />}>
-        <Scene />
-      </ErrorBoundary>
+    <div className="flex flex-col items-center">
+      <div 
+        className="h-[500px] w-[500px] md:h-[600px] md:w-[600px] cursor-pointer"
+        onClick={handleClick}
+      >
+        <ErrorBoundary fallback={<ErrorFallback />}>
+          <Scene isPaused={isPaused} />
+        </ErrorBoundary>
+      </div>
+      <p className="text-xs text-muted-foreground/50">
+        {isPaused ? "Click to play" : "Click to pause"}
+      </p>
     </div>
   );
 }

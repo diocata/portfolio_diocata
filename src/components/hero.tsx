@@ -30,9 +30,9 @@ export default function Hero() {
           </div>
 
           <p className="text-muted-foreground max-w-md mx-auto md:mx-0">
-            Full-stack engineer developing applications that optimize Amazon&apos;s logistics 
-            through AI agents, automating manual processes and improving operational efficiency. 
-            Working daily with React, TypeScript, Python, and AWS services.
+            Passionate about coding, from full-stack applications to AI agents. 
+            Currently pioneering AI adoption at Amazon, building intelligent agents 
+            that automate workflows and solve real-world challenges.
           </p>
 
           <div className="flex items-center gap-4 justify-center md:justify-start">
@@ -43,7 +43,7 @@ export default function Hero() {
               </a>
             </Button>
             <Button variant="outline" asChild>
-              <a href="mailto:contact@diogocatarino.com">
+              <a href="mailto:diogo_catarino@outlook.com">
                 <Mail className="mr-2 h-4 w-4" />
                 Contact
               </a>
