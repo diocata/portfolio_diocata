@@ -1,19 +1,34 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, ContactShadows } from "@react-three/drei";
-import { Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, useGLTF, useAnimations, Environment, ContactShadows } from "@react-three/drei";
+import { Suspense, useEffect, useRef } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import * as THREE from "three";
 
 function Avatar() {
-  const { scene } = useGLTF("/avatar.glb");
+  const group = useRef<THREE.Group>(null);
+  const { scene, animations } = useGLTF("/avatar.glb");
+  const { actions } = useAnimations(animations, group);
+  
+  useEffect(() => {
+    // Play the first animation if available
+    if (actions && Object.keys(actions).length > 0) {
+      const firstAnimation = Object.values(actions)[0];
+      if (firstAnimation) {
+        firstAnimation.reset().fadeIn(0.5).play();
+      }
+    }
+  }, [actions]);
   
   return (
-    <primitive 
-      object={scene} 
-      scale={1.6}
-      position={[0, -2.0, 0]}
-    />
+    <group ref={group}>
+      <primitive 
+        object={scene} 
+        scale={1.6}
+        position={[0, -2.0, 0]}
+      />
+    </group>
   );
 }
 
