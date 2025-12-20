@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { EMAIL, SOCIAL_LINKS } from "@/data";
 import { staggerFast, fadeInUp, avatarVariants } from "@/lib/animations";
+import Typewriter from "@/components/typewriter";
 
 // Dynamic import to avoid SSR issues with Three.js
 const Avatar3D = dynamic(() => import("@/components/avatar-3d"), {
@@ -33,7 +34,11 @@ export default function Hero() {
               Diogo Catarino
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Developing Full-Stack & AI Solutions
+              I build{" "}
+              <Typewriter
+                words={["Full-Stack Apps", "AI Agents"]}
+                className="text-primary font-semibold"
+              />
             </p>
           </motion.div>
 
