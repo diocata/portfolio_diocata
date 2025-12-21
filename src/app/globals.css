@@ -127,6 +127,19 @@
   }
 }
 
+/* Hide cursor on desktop */
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+  
+  html, body {
+    cursor: none !important;
+  }
+}
+
 /* Hologram scan animation */
 @keyframes scan {
   0% {

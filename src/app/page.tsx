@@ -7,10 +7,12 @@ import Footer from "@/components/footer";
 import ScrollProgress from "@/components/scroll-progress";
 import NowPlaying from "@/components/now-playing";
 import KonamiCode from "@/components/konami-code";
+import MagicCursor from "@/components/magic-cursor";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <MagicCursor />
       <ScrollProgress />
       <NowPlaying />
       <KonamiCode />
