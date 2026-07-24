@@ -1,8 +1,7 @@
 import { Github, Linkedin } from "lucide-react";
 import type { NavItem, SocialLink } from "@/types";
 
-export const RESUME_URL =
-  "https://drive.google.com/file/d/1oAHbCgQ2vYfuosyFQiUW-Usdc2rh_FRW/view?usp=drive_link";
+export const RESUME_URL = "/diogo-catarino-cv-2026.pdf";
 
 export const EMAIL = "diogo_catarino@outlook.com";
 

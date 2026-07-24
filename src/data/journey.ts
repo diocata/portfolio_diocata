@@ -3,11 +3,28 @@ import type { JourneyItem } from "@/types";
 
 export const journeyItems: JourneyItem[] = [
   {
-    title: "Business Intelligence Engineer I",
+    title: "AI Engineer II",
     organization: "Amazon, Luxembourg",
-    period: "August 2024 - Present",
+    period: "July 2026 - Present",
     description:
-      "Building full-stack applications that optimize Amazon's logistics operations.\n\nDeveloping AI agents to automate manual labor and improve production efficiency.\n\nWorking with React, TypeScript, and Python, leveraging AWS services including API Gateway, DynamoDB, and Lambda.",
+      "Building conversational AI agents and full-stack platforms that automate operational workflows, reduce manual work, and accelerate AI adoption across the organization.",
+    skills: [
+      "React",
+      "TypeScript",
+      "Python",
+      "AWS",
+      "AI Agents",
+      "Strands Agents",
+      "MCP",
+    ],
+    icon: Briefcase,
+  },
+  {
+    title: "AI Engineer I",
+    organization: "Amazon, Luxembourg",
+    period: "August 2024 - July 2026",
+    description:
+      "Built full-stack applications that optimized Amazon's logistics operations.\n\nDeveloped AI agents to automate manual work and improve production efficiency.\n\nWorked with React, TypeScript, and Python, leveraging AWS services including API Gateway, DynamoDB, and Lambda.",
     skills: [
       "React",
       "TypeScript",
