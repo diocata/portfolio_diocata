@@ -15,7 +15,7 @@ export const NAV_ITEMS: NavItem[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: "GitHub",
-    href: "https://github.com/Catarin0",
+    href: "https://github.com/diocata",
     icon: Github,
   },
   {

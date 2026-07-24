@@ -37,7 +37,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "Three.js", "Framer Motion", "Tailwind CSS"],
     highlights: ["3D Avatar", "Dark/Light mode", "Scroll animations"],
     links: {
-      github: "https://github.com/Catarin0/portfolio2025",
+      github: "https://github.com/diocata/portfolio_diocata",
     },
     color: "from-orange-500/20 to-red-500/20",
   },
