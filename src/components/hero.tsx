@@ -1,7 +1,8 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, Sparkles } from "lucide-react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { EMAIL, SOCIAL_LINKS } from "@/data";
@@ -20,15 +21,27 @@ const Avatar3D = dynamic(() => import("@/components/avatar-3d"), {
 
 export default function Hero() {
   return (
-    <section id="about" className="container py-24 md:py-32">
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+    <section
+      id="about"
+      className="container min-h-[calc(100svh-4rem)] flex items-center py-10 md:py-16"
+    >
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12 w-full">
         <motion.div
           className="flex-1 space-y-6 text-center md:text-left"
           variants={staggerFast}
           initial="hidden"
           animate="visible"
         >
-          <motion.div className="space-y-2" variants={fadeInUp}>
+          <motion.div className="space-y-3" variants={fadeInUp}>
+            <div className="flex items-center justify-center md:justify-start">
+              <Badge
+                variant="secondary"
+                className="px-3 py-1 text-xs font-medium gap-1.5"
+              >
+                <Sparkles className="h-3.5 w-3.5 text-primary" />
+                Software Development Engineer II @ Amazon
+              </Badge>
+            </div>
             <p className="text-muted-foreground">Hello, I&apos;m</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Diogo Catarino
@@ -36,19 +49,25 @@ export default function Hero() {
             <p className="text-xl md:text-2xl text-muted-foreground">
               I build{" "}
               <Typewriter
-                words={["Full-Stack Apps", "AI Agents"]}
+                words={[
+                  "Full-Stack Apps",
+                  "AI Agent Swarms",
+                  "MCP Servers",
+                  "Data Platforms",
+                ]}
                 className="text-primary font-semibold"
               />
             </p>
           </motion.div>
 
           <motion.p
-            className="text-muted-foreground max-w-md mx-auto md:mx-0"
+            className="text-muted-foreground max-w-lg mx-auto md:mx-0"
             variants={fadeInUp}
           >
-            Passionate about coding, from full-stack applications to AI agents. 
-            Currently pioneering AI adoption at Amazon, building intelligent agents 
-            that automate workflows and solve real-world challenges.
+            Software Development Engineer II at Amazon in Luxembourg. Passionate
+            about building full-stack platforms, Model Context Protocol (MCP)
+            tooling, and autonomous AI agent swarms that automate complex
+            workflows at scale.
           </motion.p>
 
           <motion.div

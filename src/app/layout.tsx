@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Diogo Catarino | Portfolio",
-  description: "AI Engineer II at Amazon. Computer Science Engineer specializing in Data Science.",
+  description:
+    "Software Development Engineer II at Amazon. Computer Science Engineer specializing in AI Agents, Full-Stack Systems, and Data Science.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -31,9 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -3,28 +3,30 @@ import type { JourneyItem } from "@/types";
 
 export const journeyItems: JourneyItem[] = [
   {
-    title: "AI Engineer II",
+    title: "Software Development Engineer II",
     organization: "Amazon, Luxembourg",
-    period: "July 2026 - Present",
+    period: "September 2026 - Present",
+    badge: "Promoted Sep 2026",
     description:
-      "Building conversational AI agents and full-stack platforms that automate operational workflows, reduce manual work, and accelerate AI adoption across the organization.",
+      "Building a full-stack Finance Platform to track cost, ROI, and revenue attribution across AI projects at scale.\n\nDeveloping Project Logos, a conversational AI agent equipped with deep supply chain domain knowledge to answer complex operational and network questions.",
     skills: [
       "React",
       "TypeScript",
       "Python",
       "AWS",
-      "AI Agents",
+      "Conversational AI",
       "Strands Agents",
       "MCP",
+      "AgentCore",
     ],
     icon: Briefcase,
   },
   {
-    title: "AI Engineer I",
+    title: "Business Intelligence Engineer I",
     organization: "Amazon, Luxembourg",
-    period: "August 2024 - July 2026",
+    period: "August 2024 - September 2026",
     description:
-      "Built full-stack applications that optimized Amazon's logistics operations.\n\nDeveloped AI agents to automate manual work and improve production efficiency.\n\nWorked with React, TypeScript, and Python, leveraging AWS services including API Gateway, DynamoDB, and Lambda.",
+      "Architected a multi-agent workflow using Strands and MCP servers to automate the 'Volume Loss to Caps' bridge across fulfillment operations, saving 109,500 man-hours annually.\n\nDeveloped a centralized Goal Tracking platform in React and DynamoDB for 130+ users (automating 500+ Director-level targets and reducing alignment latency by 70%), alongside an autonomous WBR narrative agent saving 5+ hours per week for L6 leadership.",
     skills: [
       "React",
       "TypeScript",
@@ -33,16 +35,17 @@ export const journeyItems: JourneyItem[] = [
       "API Gateway",
       "DynamoDB",
       "Lambda",
-      "AI",
+      "Strands Agents",
+      "MCP",
     ],
     icon: Briefcase,
   },
   {
-    title: "Software Developer Engineer - Performance Science",
+    title: "Software Development Engineer - Performance Science",
     organization: "The Goodyear Tire & Rubber Company, Luxembourg",
     period: "February 2024 - August 2024",
     description:
-      "Developed an in-house data visualization tool using React.js and Redux Toolkit, enhancing data interaction and decision-making capabilities.\n\nEngineered the backend API with Python's FastAPI framework, integrating querying capabilities with Amazon AWS and Athena for data management.\n\nConducted statistical analyses, including ANOVA tests, post hoc tests, and Bayesian inference, to validate data integrity and analytical assumptions.\n\nRebuilt existing data pipelines and designed new ones from scratch to streamline data flow and optimize processing efficiency across global operations.",
+      "Developed an in-house Lateral Force (LDF) data visualization tool using React.js and Redux Toolkit, enhancing data interaction and engineering decision-making.\n\nEngineered the backend API with Python's FastAPI framework, integrating querying capabilities with AWS and Athena for global tire sensor data management.\n\nConducted statistical analyses, including ANOVA tests, post hoc tests, and Bayesian inference, to validate data integrity and analytical assumptions.",
     skills: ["React.js", "Redux", "FastAPI", "AWS", "Athena", "Statistics"],
     icon: Briefcase,
   },
@@ -50,8 +53,9 @@ export const journeyItems: JourneyItem[] = [
     title: "Master's Degree, Computer Science and Engineering",
     organization: "Instituto Superior Técnico, Lisbon",
     period: "September 2022 - November 2024",
-    description: "Specialization in Data Science",
-    skills: ["SQL", "PDI", "MDX", "Python", "R", "d3.js"],
+    description:
+      "Specialization in Data Science.\n\nMaster's Thesis: Recognising Portuguese Stones with Deep Learning (PyTorch computer vision models classifying Portuguese ornamental stone varieties).",
+    skills: ["PyTorch", "Deep Learning", "Python", "SQL", "R", "d3.js"],
     icon: GraduationCap,
   },
   {
@@ -59,23 +63,23 @@ export const journeyItems: JourneyItem[] = [
     organization: "Julius-Maximilians-Universität, Würzburg",
     period: "March 2023 - September 2023",
     description:
-      "Several multicultural experiences. Developed advanced Jupyter skills.",
-    skills: ["Jupyter", "Data Analysis"],
+      "Graduate coursework in Computer Science and Data Science. Developed advanced Jupyter and statistical modeling workflows.",
+    skills: ["Jupyter", "Data Analysis", "Python"],
     icon: Globe,
   },
   {
     title: "SET - Semana Empresarial do Técnico",
     organization: "Instituto Superior Técnico, Lisbon",
     period: "October 2022 - September 2023",
-    description: "Development of the event website.",
-    skills: ["Web Development"],
+    description: "Development of the official event web platform.",
+    skills: ["Web Development", "React"],
     icon: Briefcase,
   },
   {
     title: "Bachelor's Degree, Computer Science Engineering",
     organization: "Iscte - Instituto Universitário de Lisboa",
     period: "September 2019 - July 2022",
-    description: "Comprehensive foundation in computer science fundamentals.",
+    description: "Comprehensive foundation in computer science fundamentals, algorithms, and distributed systems.",
     skills: [
       "Java",
       "Scala",

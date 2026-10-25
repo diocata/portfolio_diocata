@@ -57,9 +57,14 @@ export default function Journey() {
                 >
                   <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50">
                     <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2 text-muted-foreground mb-1">
-                        <Icon className="h-4 w-4" />
-                        <span className="text-sm">{item.period}</span>
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-muted-foreground mb-1">
+                        <div className="flex items-center gap-2">
+                          <Icon className="h-4 w-4" />
+                          <span className="text-sm">{item.period}</span>
+                        </div>
+                        {item.badge && (
+                          <Badge className="text-xs">{item.badge}</Badge>
+                        )}
                       </div>
                       <CardTitle className="text-lg">{item.title}</CardTitle>
                       <p className="text-sm text-muted-foreground">

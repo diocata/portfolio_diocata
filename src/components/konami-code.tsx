@@ -16,6 +16,17 @@ const KONAMI_CODE = [
   "KeyA",
 ];
 
+const COLORS = ["#ff0", "#f0f", "#0ff", "#f00", "#0f0", "#00f"];
+
+const CONFETTI_PARTICLES = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  left: `${(i * 19.7) % 100}%`,
+  color: COLORS[i % COLORS.length],
+  rotate: ((i * 73) % 720) - 360,
+  duration: 2 + ((i * 17) % 20) / 10,
+  delay: ((i * 13) % 50) / 100,
+}));
+
 export default function KonamiCode() {
   const [, setKeys] = useState<string[]>([]);
   const [activated, setActivated] = useState(false);
@@ -24,13 +35,13 @@ export default function KonamiCode() {
     function handleKeyDown(e: KeyboardEvent) {
       setKeys((prev) => {
         const newKeys = [...prev, e.code].slice(-10);
-        
+
         if (newKeys.join(",") === KONAMI_CODE.join(",")) {
           setActivated(true);
           setTimeout(() => setActivated(false), 4000);
           return [];
         }
-        
+
         return newKeys;
       });
     }
@@ -44,31 +55,29 @@ export default function KonamiCode() {
       {activated && (
         <>
           {/* Confetti */}
-          {[...Array(50)].map((_, i) => (
+          {CONFETTI_PARTICLES.map((p) => (
             <motion.div
-              key={i}
+              key={p.id}
               className="fixed w-3 h-3 rounded-full z-[100] pointer-events-none"
               style={{
-                left: `${Math.random() * 100}%`,
-                backgroundColor: ["#ff0", "#f0f", "#0ff", "#f00", "#0f0", "#00f"][
-                  Math.floor(Math.random() * 6)
-                ],
+                left: p.left,
+                backgroundColor: p.color,
               }}
               initial={{ top: -20, rotate: 0, opacity: 1 }}
               animate={{
                 top: "110vh",
-                rotate: Math.random() * 720 - 360,
+                rotate: p.rotate,
                 opacity: [1, 1, 0],
               }}
               exit={{ opacity: 0 }}
               transition={{
-                duration: 2 + Math.random() * 2,
+                duration: p.duration,
                 ease: "easeIn",
-                delay: Math.random() * 0.5,
+                delay: p.delay,
               }}
             />
           ))}
-          
+
           {/* Secret Message */}
           <motion.div
             className="fixed inset-0 flex items-center justify-center z-[99] pointer-events-none"

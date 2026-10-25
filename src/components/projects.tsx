@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Globe } from "lucide-react";
 import { projects } from "@/data";
 import { fadeInUp, staggerFast, scaleIn } from "@/lib/animations";
 
@@ -20,7 +20,8 @@ export default function Projects() {
       >
         <h2 className="text-3xl md:text-4xl font-bold">Featured Projects</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          A selection of projects that showcase my expertise in full-stack development and AI
+          A selection of projects that showcase my expertise in full-stack
+          development, AI agent swarms, and open-source tooling
         </p>
       </motion.div>
 
@@ -40,40 +41,51 @@ export default function Projects() {
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
-                
+
                 <CardHeader className="relative">
                   <div className="flex items-start justify-between">
                     <div className="p-2 rounded-lg bg-primary/10 w-fit mb-3 group-hover:bg-primary/20 transition-colors">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
-                    {project.links?.github && (
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        asChild
-                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-5 w-5" />
-                          <span className="sr-only">View on GitHub</span>
-                        </a>
-                      </Button>
+                    {project.links && (
+                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        {project.links.live && (
+                          <Button variant="ghost" size="icon" asChild>
+                            <a
+                              href={project.links.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Globe className="h-5 w-5" />
+                              <span className="sr-only">View Live Site</span>
+                            </a>
+                          </Button>
+                        )}
+                        {project.links.github && (
+                          <Button variant="ghost" size="icon" asChild>
+                            <a
+                              href={project.links.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Github className="h-5 w-5" />
+                              <span className="sr-only">View on GitHub</span>
+                            </a>
+                          </Button>
+                        )}
+                      </div>
                     )}
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
                 </CardHeader>
-                
+
                 <CardContent className="relative space-y-4">
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
-                  
+
                   {/* Highlights */}
                   <div className="flex flex-wrap gap-2">
                     {project.highlights.map((highlight) => (
@@ -85,7 +97,7 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  
+
                   {/* Tech stack */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {project.tags.map((tag) => (
@@ -98,24 +110,42 @@ export default function Projects() {
                       </Badge>
                     ))}
                   </div>
-                  
-                  {/* View project link */}
-                  {project.links?.github && (
-                    <div className="pt-2">
-                      <Button
-                        variant="link"
-                        className="p-0 h-auto text-primary group/link"
-                        asChild
-                      >
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
+
+                  {/* View project links */}
+                  {(project.links?.live || project.links?.github) && (
+                    <div className="pt-2 flex flex-wrap items-center gap-4">
+                      {project.links?.live && (
+                        <Button
+                          variant="link"
+                          className="p-0 h-auto text-primary group/link"
+                          asChild
                         >
-                          View Project
-                          <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                        </a>
-                      </Button>
+                          <a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Live Site
+                            <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                          </a>
+                        </Button>
+                      )}
+                      {project.links?.github && (
+                        <Button
+                          variant="link"
+                          className="p-0 h-auto text-primary group/link"
+                          asChild
+                        >
+                          <a
+                            href={project.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View on GitHub
+                            <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   )}
                 </CardContent>

@@ -96,7 +96,7 @@ export default function Avatar3D() {
   return (
     <div className="flex flex-col items-center">
       <div 
-        className="h-[500px] w-[500px] md:h-[600px] md:w-[600px] cursor-pointer"
+        className="h-[280px] w-[280px] sm:h-[360px] sm:w-[360px] md:h-[420px] md:w-[420px] lg:h-[480px] lg:w-[480px] max-w-full cursor-pointer"
         onClick={handleClick}
       >
         <ErrorBoundary fallback={<ErrorFallback />}>

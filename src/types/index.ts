@@ -4,6 +4,7 @@ export interface JourneyItem {
   title: string;
   organization: string;
   period: string;
+  badge?: string;
   description: string;
   skills: string[];
   icon: LucideIcon;

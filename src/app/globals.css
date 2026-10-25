@@ -115,15 +115,26 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html,
   body {
-    @apply bg-background text-foreground;
-  }
-  .container {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
 }
 
@@ -134,8 +145,9 @@
   *::after {
     cursor: none !important;
   }
-  
-  html, body {
+
+  html,
+  body {
     cursor: none !important;
   }
 }

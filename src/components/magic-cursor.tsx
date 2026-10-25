@@ -38,14 +38,9 @@ export default function MagicCursor() {
     };
   }, []);
 
-  // Hide on touch devices
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
-    return null;
-  }
-
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference hidden pointer-fine:block"
       animate={{
         x: position.x - (isPointer ? 32 : 16),
         y: position.y - (isPointer ? 32 : 16),
